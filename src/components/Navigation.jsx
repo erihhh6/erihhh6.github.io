@@ -118,8 +118,8 @@ export default function Navigation() {
         {/* Right decorative bar */}
         <div className="w-8 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent ml-4"></div>
         
-        {/* Binary Clock integrated in navbar */}
-        <div className="ml-6">
+        {/* Binary Clock integrated in navbar — hidden on very small screens */}
+        <div className="ml-6 hidden sm:block">
           <BinaryClock />
         </div>
       </nav>

@@ -1,42 +1,5 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
-
-// Typing Animation Component
-const TypingAnimation = ({ text, className, delay = 0 }) => {
-  const [displayText, setDisplayText] = useState('')
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [showCursor, setShowCursor] = useState(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (currentIndex < text.length) {
-        setDisplayText(text.slice(0, currentIndex + 1))
-        setCurrentIndex(currentIndex + 1)
-      }
-    }, delay + currentIndex * 10)
-
-    return () => clearTimeout(timer)
-  }, [currentIndex, text, delay])
-
-  useEffect(() => {
-    const cursorTimer = setInterval(() => {
-      setShowCursor(prev => !prev)
-    }, 500)
-
-    return () => clearInterval(cursorTimer)
-  }, [])
-
-  return (
-    <span className={className}>
-      {displayText}
-      {currentIndex < text.length && (
-        <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}>
-          |
-        </span>
-      )}
-    </span>
-  )
-}
+import TypingAnimation from './TypingAnimation'
 
 export default function About() {
   return (
@@ -69,11 +32,9 @@ export default function About() {
                     className="text-lg leading-relaxed text-slate-300"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 1.5 }}
+                    transition={{ duration: 0.6, delay: 1 }}
                   >
-                    I'm a passionate Computer Science student at CTI, deeply fascinated by the intersection of 
-                    technology and human potential. My journey in tech is driven by a genuine curiosity about 
-                    artificial intelligence and its capacity to solve complex problems while augmenting human capabilities.
+                    Most interface with the world through abstractions. I prefer the underlying mechanics. I am a computer engineering student focused on zero-knowledge cryptography, secure computation and particle physics, operating with absolute systemic clarity.
                   </motion.p>
                   
                   <motion.p 
@@ -82,21 +43,21 @@ export default function About() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 1.8 }}
                   >
-                    Beyond coding, I'm committed to personal growth through sports, mindfulness, and the pursuit 
-                    of mental clarity. I believe that the best solutions emerge from a balanced mind, and I strive 
-                    to bring this philosophy into every project I undertake. My goal is continuous learning and 
-                    contributing to meaningful projects that make a positive impact.
+                    I enjoy building things that apply what I study: from GPU-accelerated ZK primitives to
+                    interactive cryptographic protocols. Beyond academics, I am committed to continuous learning
+                    and believe that clear thinking, whether in math or in code, is the most transferable
+                    skill there is.
                   </motion.p>
                 </div>
 
-                {/* Skills badges in organized layout */}
+                {/* Skills badges */}
                 <motion.div 
                   className="flex flex-wrap gap-3 justify-center max-w-2xl mx-auto"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 2.1 }}
                 >
-                  {['Problem Solving', 'Continuous Learning', 'Team Collaboration', 'Innovation'].map((trait, index) => (
+                  {['Informatics', 'Mathematics', 'Physics'].map((trait, index) => (
                     <motion.span
                       key={trait}
                       className="px-4 py-2 bg-orange-600/10 text-orange-400 rounded-full text-sm font-medium border border-orange-600/20"
@@ -109,6 +70,19 @@ export default function About() {
                     </motion.span>
                   ))}
                 </motion.div>
+
+                {/* Task 4.1 — University badge */}
+                <motion.div
+                  className="flex justify-center mt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 2.7 }}
+                >
+                  <span className="px-4 py-2 bg-slate-700/40 text-slate-300 rounded-full text-sm border border-slate-600/30 flex items-center gap-2">
+                    <span>RO</span>
+                    <span>Computers and Information Technology @ University of Bucharest</span>
+                  </span>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -116,4 +90,4 @@ export default function About() {
       </div>
     </section>
   )
-} 
+}
