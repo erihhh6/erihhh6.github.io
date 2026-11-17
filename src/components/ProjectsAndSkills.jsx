@@ -7,22 +7,22 @@ import TypingAnimation from './TypingAnimation'
 const projects = [
   {
     title: "CryptoAuction",
-    description: "Sealed-bid auction protocol with hash commitments, Fiat-Shamir proofs, and a 3-phase reveal. Demonstrates hiding, binding, and soundness properties.",
+    description: "Sealed-bid auction in three phases (commit, ZK prove, reveal) with Pedersen commitments and zero-knowledge range proofs computed in the browser. Documented threat model; 240+ tests, including end-to-end in 3 browsers.",
     technologies: ["Python", "Flask", "JavaScript", "Cryptography"],
     github: "https://github.com/erihhh6/crypto-auction",
     gradient: "from-orange-500 to-red-600"
   },
   {
     title: "Crypto Visualizer",
-    description: "Interactive visualization of AES modes including the ECB penguin attack, and DH vs ECDH key exchange with elliptic curve animation.",
+    description: "Interactive visualization of AES modes block by block, the ECB penguin attack, and DH vs ECDH key exchange, plus a Tamper Lab showing that only GCM resists forged ciphertext. Tested against NIST known-answer vectors.",
     technologies: ["Python", "CustomTkinter", "Pillow", "matplotlib"],
     github: "https://github.com/erihhh6/crypto-visualizer",
     gradient: "from-blue-500 to-purple-600"
   },
   {
     title: "ZK GPU Accelerator",
-    description: "CUDA-accelerated ZK proof primitives (NTT and MSM) on the BN254 field. Achieves 12–45x speedup over CPU baseline on an RTX 5050.",
-    technologies: ["Python", "CUDA", "CuPy", "Numba", "NumPy"],
+    description: "CUDA kernels for BN254 proving: 254-bit field arithmetic, NTT, curve operations and Pippenger MSM. Runs the NTT and MSM work of a 100K-constraint Groth16 proof 41x faster than the same algorithms in Python.",
+    technologies: ["Python", "CUDA", "CuPy", "NumPy"],
     github: "https://github.com/erihhh6/zk-gpu-accelerator",
     gradient: "from-green-500 to-teal-600"
   }
